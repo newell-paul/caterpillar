@@ -5,9 +5,19 @@ canvas.width = innerWidth
 canvas.height = innerHeight
 
 const caterpillar = new Caterpillar()
+const mushrooms = []
 
+for (let i = 0; i < 10; i++) {
+  const x = getRandom(0, canvas.width - 50)
+  const y = getRandom(0, canvas.height / 2)
+  // const size = getRandom(10, 30)
 
-const mushroom = new Mushroom()
+  mushrooms.push(new Mushroom(x, y))
+}
+
+function getRandom(min, max) {
+  return Math.random() * (max - min) + min;
+}
 
 let lastTimestamp = 0
 
@@ -27,7 +37,11 @@ function gameLoop(timestamp) {
   caterpillar.draw()
   caterpillar.update(deltaTime)
 
-  mushroom.draw()
+  for (const mushroom of mushrooms) {
+    mushroom.velocity.y = 4
+    mushroom.update(deltaTime)
+    mushroom.draw()
+  }
 
   requestAnimationFrame(gameLoop)
 }
