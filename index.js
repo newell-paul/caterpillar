@@ -5,19 +5,20 @@ canvas.width = innerWidth
 canvas.height = innerHeight
 
 const caterpillar = new Caterpillar()
-const mushrooms = []
 
-for (let i = 0; i < 10; i++) {
-  const x = getRandom(0, canvas.width - 50)
-  const y = getRandom(0, canvas.height / 2)
-  // const size = getRandom(10, 30)
+const object = [
+  {x: 60, y: 50, size: 45},
+  {x: 120, y: 100, size: 60},
+  {x: 180, y: 200, size: 45},
+  {x: 240, y: 50, size: 45},
+  {x: 300, y: 80, size: 60},
+  {x: 360, y: 280, size: 45},
+  {x: 420, y: 50, size: 45},
+  {x: 480, y: 120, size: 60},
+  {x: 540, y: 240, size: 60}
+]
 
-  mushrooms.push(new Mushroom(x, y))
-}
-
-function getRandom(min, max) {
-  return Math.random() * (max - min) + min;
-}
+const mushrooms = object.map(obj => new Mushroom(obj.x, obj.y, obj.size))
 
 let lastTimestamp = 0
 
@@ -35,10 +36,20 @@ function gameLoop(timestamp) {
 
   c.clearRect(0, 0, canvas.width, canvas.height)
   caterpillar.draw()
+  
   caterpillar.update(deltaTime)
 
   for (const mushroom of mushrooms) {
-    mushroom.velocity.y = 4
+
+    if (
+      collision({
+        rectangle1: caterpillar,
+        rectangle2: mushroom
+      }) 
+    )
+      endGame()
+
+    mushroom.velocity.y = 5
     mushroom.update(deltaTime)
     mushroom.draw()
   }
@@ -57,3 +68,15 @@ document.addEventListener('keyup', (event) => {
 })
 
 gameLoop()
+
+function collision({ rectangle1, rectangle2 }) {
+  return (
+    rectangle1.head.position.y + rectangle1.head.height >= rectangle2.shroom.position.y &&
+    rectangle1.head.position.x + rectangle1.head.width >= rectangle2.shroom.position.x &&
+    rectangle1.head.position.x <= rectangle2.shroom.position.x + rectangle2.shroom.width
+  )
+}
+
+function endGame() {
+  console.log('you lose')
+}

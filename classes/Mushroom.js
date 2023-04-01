@@ -1,12 +1,12 @@
 class Mushroom {
-    constructor(x, y) {
+    constructor(x, y, size) {
       this.shroom = {
         position: {
           x: x,
           y: y
         },
-        width: 50,
-        height: 50,
+        width: size,
+        height: size,
         image: new Image()
       }
       this.shroom.image.src = './img/mushroom red.png'
