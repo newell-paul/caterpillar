@@ -35,24 +35,24 @@ function gameLoop(timestamp) {
   }
 
   c.clearRect(0, 0, canvas.width, canvas.height)
-  caterpillar.draw()
   
   caterpillar.update(deltaTime)
+  caterpillar.draw()
 
-  for (const mushroom of mushrooms) {
+  for (let i = 0; i < mushrooms.length; i++) {
+    const mushroom = mushrooms[i];
 
-    if (
-      collision({
-        rectangle1: caterpillar,
-        rectangle2: mushroom
-      }) 
-    )
-      endGame()
-
-    mushroom.velocity.y = 5
-    mushroom.update(deltaTime)
-    mushroom.draw()
+    if (collision(caterpillar, mushroom)) {
+      mushrooms.splice(i, 1)
+      audio.explode.play()
+      i--
+      continue    
   }
+
+  mushroom.velocity.y = 5;
+  mushroom.update(deltaTime);
+  mushroom.draw();
+}
 
   requestAnimationFrame(gameLoop)
 }
@@ -68,15 +68,3 @@ document.addEventListener('keyup', (event) => {
 })
 
 gameLoop()
-
-function collision({ rectangle1, rectangle2 }) {
-  return (
-    rectangle1.head.position.y + rectangle1.head.height >= rectangle2.shroom.position.y &&
-    rectangle1.head.position.x + rectangle1.head.width >= rectangle2.shroom.position.x &&
-    rectangle1.head.position.x <= rectangle2.shroom.position.x + rectangle2.shroom.width
-  )
-}
-
-function endGame() {
-  console.log('you lose')
-}
