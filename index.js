@@ -7,15 +7,18 @@ canvas.height = innerHeight
 const caterpillar = new Caterpillar()
 
 const object = [
-  {x: 60, y: 50, size: 45},
-  {x: 120, y: 100, size: 60},
-  {x: 180, y: 200, size: 45},
-  {x: 240, y: 50, size: 45},
-  {x: 300, y: 80, size: 60},
+  {x: 60, y: 50, size: 30},
+  {x: 120, y: 100, size: 40},
+  {x: 130, y: 200, size: 30},
+  {x: 180, y: 200, size: 20},
+  {x: 190, y: 70, size: 40},
+  {x: 240, y: 50, size: 30},
+  {x: 300, y: 80, size: 20},
   {x: 360, y: 280, size: 45},
   {x: 420, y: 50, size: 45},
-  {x: 480, y: 120, size: 60},
-  {x: 540, y: 240, size: 60}
+  {x: 480, y: 120, size: 20},
+  {x: 500, y: 80, size: 30},
+  {x: 540, y: 240, size: 30}
 ]
 
 const mushrooms = object.map(obj => new Mushroom(obj.x, obj.y, obj.size))
@@ -41,15 +44,16 @@ function gameLoop(timestamp) {
 
   for (let i = 0; i < mushrooms.length; i++) {
     const mushroom = mushrooms[i];
-
     if (collision(caterpillar, mushroom)) {
       mushrooms.splice(i, 1)
-      audio.explode.play()
+      audio.leafBite.play()
       i--
       continue    
   }
 
-  mushroom.velocity.y = 5;
+  mushroom.velocity.y = 2
+  mushroom.velocity.x = 1
+
   mushroom.update(deltaTime);
   mushroom.draw();
 }
