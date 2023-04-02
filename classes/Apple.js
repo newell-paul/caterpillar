@@ -1,4 +1,4 @@
-class Mushroom {
+class Apple {
     constructor(x, y, size) {
       this.position = {
           x: x,
@@ -7,10 +7,10 @@ class Mushroom {
       this.width = size,
       this.height = size,
       this.image = new Image()
-      this.image.src = './img/mushroom red.png'
+      this.image.src = './img/apple.png'
       this.velocity = {
           x: 0,
-          y: 4
+          y: 6
       }
     }
 
@@ -21,10 +21,19 @@ class Mushroom {
           this.position.y = newPositionY
         } else {
           this.position.y = 0
+          this.position.x = Math.random() * canvas.width
         }
       }
   
       draw() {
-        c.drawImage(this.image, this.position.x, this.position.y, this.width, this.height)
+        let waveFrequency = 0.001
+        let waveOffset = this.position.y * waveFrequency 
+        let rotationAngle = Math.sin(waveOffset) * (Math.PI / .3)
+
+        c.save()
+        c.translate(this.position.x + this.width / 2, this.position.y + this.height / 2)
+        c.rotate(rotationAngle)
+        c.drawImage(this.image, -this.width / 2, -this.height / 2, this.width, this.height)
+        c.restore()  
       }
   }

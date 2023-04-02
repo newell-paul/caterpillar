@@ -31,8 +31,10 @@ const mushroomMap = [
 
 const leafs = leafMap.map(obj => new Leaf(obj.x, obj.y, obj.size))
 const shrooms = mushroomMap.map(obj => new Mushroom(obj.x , obj.y, obj.size))
+const apple = new Apple(150, 10, 40)
 
 let lastTimestamp = 0
+let score = 0
 
 function gameLoop(timestamp) {
   const deltaTime = timestamp - lastTimestamp
@@ -54,7 +56,6 @@ function gameLoop(timestamp) {
   for (let i = 0; i < shrooms.length; i++) {
     const shroom = shrooms[i]
 
-    shroom.velocity.y = 4
     shroom.update(deltaTime)
     shroom.draw()
   }  
@@ -64,18 +65,25 @@ function gameLoop(timestamp) {
     if (collision(caterpillar, leaf)) {
       audio.leafBite.play()
       leaf.position.y = 10
+      score ++
       
       continue    
     }
-
-    leaf.velocity.y = 5
-    leaf.velocity.x = 1
   
-
     leaf.update(deltaTime)
     leaf.draw()
   }
 
+  if (collision(caterpillar, apple)) {
+    audio.leafBite.play()
+    apple.position.y = 10
+    apple.position.x = Math.random() * canvas.width
+    score += 5  
+  }
+
+  apple.update(deltaTime)
+  apple.draw()
+  
   requestAnimationFrame(gameLoop)
 }
 

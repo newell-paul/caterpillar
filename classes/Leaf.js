@@ -9,8 +9,8 @@ class Leaf {
       this.image = new Image()
       this.image.src = './img/leaf.png'
       this.velocity = {
-          x: 0,
-          y: 0
+          x: 1,
+          y: 5
       }
     }
 
