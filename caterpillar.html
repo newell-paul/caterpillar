@@ -6,6 +6,12 @@
     overflow: hidden;
   }
 
+  #canvas {
+            width: 600px;
+            height: 600px;
+            border: 1px solid black;
+  }
+      
   canvas {
     display: block;
   }
@@ -21,8 +27,8 @@
   </style>
 </head>
 <body>
-  <canvas id="gameCanvas" width="600" height="300"></canvas>
-  
+  <canvas id="canvas" width="600" height="600"></canvas>
+
   <script
   src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"
   integrity="sha512-6+YN/9o9BWrk6wSfGxQGpt3EUK6XeHi6yeHV+TYD2GR0Sj/cggRpXr1BrAQf0as6XslxomMUxXp2vIl+fv0QRA=="
@@ -31,6 +37,7 @@
   ></script>
   <script src="audio.js"></script>
   <script src="util.js"></script>
+  <script src="./classes/Leaf.js"></script>
   <script src="./classes/Mushroom.js"></script>
   <script src="./classes/Caterpillar.js"></script>
   <script src="index.js"></script>
