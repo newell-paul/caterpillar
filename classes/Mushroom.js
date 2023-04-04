@@ -7,7 +7,7 @@ class Mushroom {
       this.width = size,
       this.height = size,
       this.image = new Image()
-      this.image.src = './img/mushroom red.png'
+      this.image.src = './img/mushroom.png'
       this.velocity = {
           x: 0,
           y: 4

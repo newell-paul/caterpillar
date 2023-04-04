@@ -7,10 +7,10 @@ class Leaf {
       this.width = size,
       this.height = size,
       this.image = new Image()
-      this.image.src = './img/leaf.png'
+      this.image.src = './img/leaf2.png'
       this.velocity = {
           x: 1,
-          y: 5
+          y: Math.floor(Math.random() * (6 - 4 + 1)) + 4
       }
     }
 

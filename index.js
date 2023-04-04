@@ -7,25 +7,24 @@ canvas.height = innerHeight
 const caterpillar = new Caterpillar()
 
 const leafMap = [
-  {x: 10, y: 50, size: 30},
-  {x: 80, y: 150, size: 40},
-  {x: 130, y: 70, size: 30},
+  {x: 10, y: 50, size: 20},
+  {x: 80, y: 150, size: 35},
+  {x: 130, y: 70, size: 35},
   {x: 300, y: 250, size: 20},
-  {x: 500, y: 200, size: 40}
+  {x: 400, y: 150, size: 35}
 ]
 
 const mushroomMap = [
   {x: 20, y: 50, size: 30},
-  {x: 120, y: 100, size: 50},
+  {x: 120, y: 100, size: 55},
   {x: 130, y: 300, size: 30},
-  {x: 180, y: 250, size: 50},
-  {x: 190, y: 70, size: 50},
+  {x: 180, y: 250, size: 55},
+  {x: 190, y: 70, size: 55},
   {x: 240, y: 300, size: 30},
   {x: 300, y: 80, size: 30},
-  {x: 360, y: 280, size: 50},
-  {x: 420, y: 50, size: 50},
+  {x: 360, y: 280, size: 55},
   {x: 480, y: 120, size: 30},
-  {x: 500, y: 80, size: 50},
+  {x: 500, y: 80, size: 55},
   {x: 540, y: 240, size: 30}
 ]
 
