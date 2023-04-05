@@ -1,17 +1,6 @@
-class Mushroom {
+class Mushroom extends GameObject {
     constructor(x, y, size) {
-      this.position = {
-          x: x,
-          y: y
-        },
-      this.width = size,
-      this.height = size,
-      this.image = new Image()
-      this.image.src = './img/mushroom.png'
-      this.velocity = {
-          x: 0,
-          y: 4
-      }
+        super(x, y, size, './img/mushroom.png', 4);
     }
 
     update(deltaTime) {

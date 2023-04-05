@@ -1,18 +1,8 @@
-class Leaf {
-    constructor(x, y, size) {
-      this.position = {
-          x: x,
-          y: y
-        },
-      this.width = size,
-      this.height = size,
-      this.image = new Image()
-      this.image.src = './img/leaf2.png'
-      this.velocity = {
-          x: 1,
-          y: Math.floor(Math.random() * (6 - 4 + 1)) + 4
-      }
-    }
+class Leaf extends GameObject {
+
+  constructor(x, y, size) {
+    super(x, y, size, './img/leaf.png', Math.floor(Math.random() * (6 - 4 + 1)) + 4)
+  }  
 
     update(deltaTime) {
         let newPositionY = this.position.y + this.velocity.y;

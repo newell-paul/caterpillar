@@ -1,18 +1,7 @@
-class Apple {
+class Apple extends GameObject {
     constructor(x, y, size) {
-      this.position = {
-          x: x,
-          y: y
-        },
-      this.width = size,
-      this.height = size,
-      this.image = new Image()
-      this.image.src = './img/apple.png'
-      this.velocity = {
-          x: 0,
-          y: 6
-      }
-    }
+        super(x, y, size, './img/apple.png', 6)
+      }  
 
     update(deltaTime) {
         let newPositionY = this.position.y + this.velocity.y
