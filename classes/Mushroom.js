@@ -1,6 +1,6 @@
 class Mushroom extends GameObject {
     constructor(x, y, size) {
-        super(x, y, size, './img/mushroom.png', 4);
+        super(x, y, size, './img/mushroom.png', 5);
     }
 
     update(deltaTime) {

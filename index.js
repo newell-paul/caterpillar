@@ -39,22 +39,17 @@ let score = 0
 let gameOver = false
 
 function gameLoop(timestamp) {
-
-  if (gameOver) return
-
   const deltaTime = timestamp - lastTimestamp
-  lastTimestamp = timestamp;
+  lastTimestamp = timestamp
 
-  handleInput(keys)
-  updateObjects(deltaTime)
-  checkCollisions()
-  drawObjects()
+  if (mushroomCollide()) { gameOver = true }
 
-  requestAnimationFrame(gameLoop);
-
-  if (mushroomCollide()) {
-    gameOver = true
-  }
+  handleInput(keys);
+  updateObjects(deltaTime);
+  checkCollisions();
+  drawObjects();
+  
+  if (!gameOver) { requestAnimationFrame(gameLoop) }
 }
 
 const keys = {}

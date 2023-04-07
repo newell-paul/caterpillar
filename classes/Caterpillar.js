@@ -8,15 +8,13 @@ class Caterpillar {
         width: 45,
         height: 45,
         image: new Image()
-      };
+      }
       this.head.image.src = './img/right head.png'
   
       this.velocity = {
         x: 0,
         y: 0
-      };
-
-      this.flashColour = false
+      }
   
       this.body = [];
       this.bodyLength = 4
@@ -29,7 +27,7 @@ class Caterpillar {
           width: 40,
           height: 40,
           image: new Image()
-        };
+        }
         segment.image.src = './img/body.png'
         this.body.push(segment)
       }
@@ -44,6 +42,8 @@ class Caterpillar {
       }
       c.drawImage(this.head.image, this.head.position.x, this.head.position.y, this.head.width, this.head.height)
   
+      if (!caterpillar.body.length) { return }
+
       this.body.forEach((segment) => {
         if (direction < 0) {
           segment.image.src = './img/body left.png'
@@ -56,19 +56,23 @@ class Caterpillar {
     }
   
     update(deltaTime) {
-      for (let i = this.body.length - 1; i > 0; i--) {
-        this.body[i].position.x += (this.body[i - 1].position.x - this.body[i].position.x) * 0.1;
-        this.body[i].position.y = this.body[i - 1].position.y + (this.body[i - 1].height - 14)
-      }
-    
-      this.body[0].position.x += (this.head.position.x - this.body[0].position.x) * 0.1
-      this.body[0].position.y = this.head.position.y + (this.head.height - 14 )
-    
-      let newPositionX = this.head.position.x + this.velocity.x
-    
-      if (newPositionX >= 0 && newPositionX + this.head.width <= canvas.width) {
-        this.head.position.x = newPositionX
-      }
+        let newPositionX = this.head.position.x + this.velocity.x
+
+        if (newPositionX >= 0 && newPositionX + this.head.width <= canvas.width) {
+            this.head.position.x = newPositionX  
+        }    
+
+        if (!caterpillar.body.length) { return }
+
+        for (let i = this.body.length - 1; i > 0; i--) {
+            this.body[i].position.x += (this.body[i - 1].position.x - this.body[i].position.x) * 0.1;
+            this.body[i].position.y = this.body[i - 1].position.y + (this.body[i - 1].height - 14)
+        }
+        
+        this.body[0].position.x += (this.head.position.x - this.body[0].position.x) * 0.1
+        this.body[0].position.y = this.head.position.y + (this.head.height - 14 )
+
+      
     }
-  }
+}
   

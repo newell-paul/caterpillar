@@ -9,7 +9,6 @@ function collision(rectangle1, rectangle2, padding1 = 0, padding2 = [0, 0]) {
   );
 }
 
-
 function endGame() {
   explode.play()
 }
@@ -53,7 +52,7 @@ function checkCollisions() {
   
   for (let leaf of leafs) {
     if (collision(caterpillar, leaf)) {
-      // audio.leafBite.play();
+      audio.leafBite.play();
       leaf.position.y = 10;
       score++;
       updateScoreDisplay(score);
@@ -74,7 +73,10 @@ function mushroomCollide() {
   for (let shroom of shrooms) {
     if (collision(caterpillar, shroom, 10, [10, 2])) {
       audio.leafBite.play()
-      return true
+      shroom.position.y = -20
+
+      if (!caterpillar.body.length) { return true }
+      caterpillar.body.pop()
     }
   }
   return false
