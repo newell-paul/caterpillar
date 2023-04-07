@@ -5,6 +5,6 @@ const audio = {
       src: 'audio/explode.wav'
   }),
   leafBite: new Howl({
-    src: 'audio/leaf bite.mp3'
+    src: 'audio/explode.wav'
 })
 }  

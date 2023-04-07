@@ -19,7 +19,7 @@ class Caterpillar {
       this.body = [];
       this.bodyLength = 4
       for (let i = 0; i < this.bodyLength; i++) {
-        const bodySegment = {
+        const segment = {
           position: {
             x: canvas.width / 2 + 100,
             y: 200 + (i + 1) * 60
@@ -28,8 +28,8 @@ class Caterpillar {
           height: 40,
           image: new Image()
         };
-        bodySegment.image.src = './img/body.png'
-        this.body.push(bodySegment)
+        segment.image.src = './img/body.png'
+        this.body.push(segment)
       }
     }
   

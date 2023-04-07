@@ -1,17 +1,25 @@
 <!DOCTYPE html>
 <style>
+  @font-face {
+    font-family: 'ArcadeClassic';
+    src: url('./classes/fonts/arcadeclassic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
   html, body {
     margin: 0;
     padding: 0;
     overflow: hidden;
+    font-family: 'ArcadeClassic', sans-serif;
   }
 
   #canvas {
-            width: 500px;
-            height: 500px;
-            border: 1px solid black;
+    width: 500px;
+    height: 500px;
+    border: 1px solid black;
   }
-      
+
   canvas {
     display: block;
   }
@@ -19,6 +27,15 @@
 <html>
 <head>
   <style>
+    #score-container {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 24px;
+      color: #e7df64;
+      font-family: 'ArcadeClassic', sans-serif;
+    }
+
     canvas {
       display: block;
       margin: auto;
@@ -27,13 +44,14 @@
   </style>
 </head>
 <body>
+  <div id="score-container">00000</div>
   <canvas id="canvas" width="500" height="450"></canvas>
 
   <script
-  src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"
-  integrity="sha512-6+YN/9o9BWrk6wSfGxQGpt3EUK6XeHi6yeHV+TYD2GR0Sj/cggRpXr1BrAQf0as6XslxomMUxXp2vIl+fv0QRA=="
-  crossorigin="anonymous"
-  referrerpolicy="no-referrer"
+    src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"
+    integrity="sha512-6+YN/9o9BWrk6wSfGxQGpt3EUK6XeHi6yeHV+TYD2GR0Sj/cggRpXr1BrAQf0as6XslxomMUxXp2vIl+fv0QRA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
   ></script>
   <script src="audio.js"></script>
   <script src="util.js"></script>

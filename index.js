@@ -10,8 +10,10 @@ const leafMap = [
   {x: 10, y: 50, size: 20},
   {x: 80, y: 150, size: 35},
   {x: 130, y: 70, size: 35},
+  {x: 200, y: 250, size: 20},
   {x: 300, y: 250, size: 20},
-  {x: 400, y: 150, size: 35}
+  {x: 340, y: 150, size: 35},
+  {x: 380, y: 70, size: 35}
 ]
 
 const mushroomMap = [
@@ -65,6 +67,7 @@ function gameLoop(timestamp) {
       audio.leafBite.play()
       leaf.position.y = 10
       score ++
+      updateScoreDisplay(score)
       
       continue    
     }
@@ -77,7 +80,8 @@ function gameLoop(timestamp) {
     audio.leafBite.play()
     apple.position.y = 10
     apple.position.x = Math.random() * canvas.width
-    score += 5  
+    score += 5
+    updateScoreDisplay(score)
   }
 
   apple.update(deltaTime)

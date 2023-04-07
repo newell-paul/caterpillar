@@ -10,3 +10,13 @@ function collision(rectangle1, rectangle2) {
 function endGame() {
   explode.play()
 }
+
+function updateScoreDisplay(score) {
+  const scoreContainer = document.getElementById('score-container');
+  scoreContainer.innerHTML = `${padScore(score, 5)}`;
+}
+
+function padScore(score, length) {
+  const scoreStr = score.toString();
+  return scoreStr.padStart(length, '0');
+}
