@@ -39,63 +39,20 @@ let score = 0
 
 function gameLoop(timestamp) {
   const deltaTime = timestamp - lastTimestamp
-  lastTimestamp = timestamp
+  lastTimestamp = timestamp;
 
-  if (keys['ArrowLeft']) {
-    caterpillar.velocity.x = -4
-  } else if (keys['ArrowRight']) {
-    caterpillar.velocity.x = 4
-  } else {
-    caterpillar.velocity.x = 0
-  }
+  handleInput(keys)
+  updateObjects(deltaTime)
+  checkCollisions()
+  drawObjects()
 
-  c.clearRect(0, 0, canvas.width, canvas.height)
-  
-  caterpillar.update(deltaTime)
-  caterpillar.draw()
-
-  for (let i = 0; i < shrooms.length; i++) {
-    const shroom = shrooms[i]
-
-    shroom.update(deltaTime)
-    shroom.draw()
-  }  
-
-  for (let i = 0; i < leafs.length; i++) {
-    const leaf = leafs[i]
-    if (collision(caterpillar, leaf)) {
-      audio.leafBite.play()
-      leaf.position.y = 10
-      score ++
-      updateScoreDisplay(score)
-      
-      continue    
-    }
-  
-    leaf.update(deltaTime)
-    leaf.draw()
-  }
-
-  if (collision(caterpillar, apple)) {
-    audio.leafBite.play()
-    apple.position.y = 10
-    apple.position.x = Math.random() * canvas.width
-    score += 5
-    updateScoreDisplay(score)
-  }
-
-  apple.update(deltaTime)
-  apple.draw()
-  
-  requestAnimationFrame(gameLoop)
+  requestAnimationFrame(gameLoop);
 }
 
 const keys = {}
-
 document.addEventListener('keydown', (event) => {
   keys[event.key] = true
 })
-
 document.addEventListener('keyup', (event) => {
   keys[event.key] = false
 })
