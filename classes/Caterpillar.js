@@ -15,6 +15,8 @@ class Caterpillar {
         x: 0,
         y: 0
       };
+
+      this.flashColour = false
   
       this.body = [];
       this.bodyLength = 4
@@ -67,6 +69,6 @@ class Caterpillar {
       if (newPositionX >= 0 && newPositionX + this.head.width <= canvas.width) {
         this.head.position.x = newPositionX
       }
-    }  
+    }
   }
   
