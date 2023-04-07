@@ -34,7 +34,6 @@ function handleInput(keys) {
 }
 
 function updateObjects(deltaTime) {
-
   caterpillar.update(deltaTime)
 
   for (let leaf of leafs) {
@@ -49,7 +48,6 @@ function updateObjects(deltaTime) {
 }
 
 function checkCollisions() {
-  
   for (let leaf of leafs) {
     if (collision(caterpillar, leaf)) {
       audio.leafBite.play();
@@ -84,7 +82,6 @@ function mushroomCollide() {
 
 function drawObjects() {
   c.clearRect(0, 0, canvas.width, canvas.height)
-
   caterpillar.draw();
 
   for (let shroom of shrooms) {
@@ -96,4 +93,28 @@ function drawObjects() {
   }
 
   apple.draw();
+}
+
+function spinHead(timestamp) {
+  const deltaTime = timestamp - lastTimestamp
+  lastTimestamp = timestamp
+
+  c.clearRect(0, 0, canvas.width, canvas.height);
+  drawObjects()
+  drawGameOver()
+
+  caterpillar.head.rotation += 0.1
+  caterpillar.head.height += .5
+  caterpillar.head.width += .5
+
+  if (caterpillar.head.rotation < 4 * Math.PI) {
+    requestAnimationFrame(spinHead)
+  }
+}
+
+function drawGameOver() {
+  c.font = "40px 'ArcadeClassic', sans-serif"
+  c.fillStyle = "red"
+  c.textAlign = "center"
+  c.fillText("Game Over", canvas.width / 2, canvas.height / 2)
 }

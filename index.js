@@ -39,17 +39,22 @@ let score = 0
 let gameOver = false
 
 function gameLoop(timestamp) {
-  const deltaTime = timestamp - lastTimestamp
-  lastTimestamp = timestamp
+  const deltaTime = timestamp - lastTimestamp;
+  lastTimestamp = timestamp;
 
-  if (mushroomCollide()) { gameOver = true }
+  if (mushroomCollide()) {
+    gameOver = true;
+  }
 
-  handleInput(keys);
-  updateObjects(deltaTime);
-  checkCollisions();
-  drawObjects();
-  
-  if (!gameOver) { requestAnimationFrame(gameLoop) }
+  if (!gameOver) {
+    handleInput(keys);
+    updateObjects(deltaTime);
+    checkCollisions();
+    drawObjects();
+    requestAnimationFrame(gameLoop);
+  } else {
+    spinHead(timestamp)
+  }
 }
 
 const keys = {}
@@ -61,3 +66,5 @@ document.addEventListener('keyup', (event) => {
 })
 
 gameLoop()
+
+
