@@ -39,6 +39,10 @@ let score = 0
 let gameOver = false
 
 function gameLoop(timestamp) {
+  if (titleScreenActive) {
+    titleScreen()
+    return
+  }
   const deltaTime = timestamp - lastTimestamp;
   lastTimestamp = timestamp;
 
@@ -64,6 +68,18 @@ document.addEventListener('keydown', (event) => {
 document.addEventListener('keyup', (event) => {
   keys[event.key] = false
 })
+
+let titleScreenActive = true
+document.addEventListener('keydown', (event) => {
+  if (titleScreenActive && event.key === ' ') {
+    titleScreenActive = false;
+    addSegments()
+    requestAnimationFrame(gameLoop)
+    return
+  }
+
+  keys[event.key] = true;
+});
 
 gameLoop()
 

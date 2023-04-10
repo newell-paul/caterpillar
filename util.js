@@ -70,11 +70,11 @@ function checkCollisions() {
 function mushroomCollide() {
   for (let shroom of shrooms) {
     if (collision(caterpillar, shroom, 10, [10, 2])) {
-      audio.crash.play()
       crash()
       shroom.position.y = -20
 
       if (!caterpillar.body.length) { return true }
+      audio.pop.play()
       caterpillar.body.pop()
     }
   }
@@ -158,3 +158,41 @@ function easeOutElastic(x) {
     ? 1
     : Math.pow(2, -10 * x) * Math.sin((x * 10 - 0.75) * c4) + 1;
 }
+
+function addSegment() {
+    const segment = {
+      position: {
+        x: caterpillar.head.position.x / 2 + 80,
+        y: 200 + (caterpillar.bodyLength + 1) * 60
+      },
+      width: 40,
+      height: 40,
+      image: new Image()
+    };
+    segment.image.src = './img/body.png'
+    audio.pop.play()
+    caterpillar.body.push(segment)
+}
+
+function addSegments() {
+  if (caterpillar.body.length < 4) {
+    addSegment()
+
+    setTimeout(addSegments, 1000)
+  }
+}
+
+function titleScreen() {
+  c.fillStyle = 'black';
+  c.fillRect(0, 0, canvas.width, canvas.height);
+
+  c.font = '60px ArcadeClassic, sans-serif';
+  c.fillStyle = 'green';
+  c.textAlign = 'center';
+  c.fillText('Caterpillar 2', canvas.width / 2, canvas.height / 2);
+
+  c.fillStyle = 'white';
+  c.font = '24px ArcadeClassic, sans-serif';
+  c.fillText('Press any key to start', canvas.width / 2, canvas.height / 2 + 50);
+}
+

@@ -2,7 +2,7 @@ class Caterpillar {
     constructor() {
       this.head = {
         position: {
-          x: canvas.width / 2,
+          x: canvas.width / 2 - 20 ,
           y: 350
         },
         width: 45,
@@ -10,36 +10,25 @@ class Caterpillar {
         rotation: 0,
         image: new Image()
       };
-      this.head.image.src = './img/right head.png';
+
+      this.head.headLeft = './img/left head.png'
+      this.head.headRight = './img/right head.png'
+      this.head.image.src = this.head.headRight
   
       this.velocity = {
         x: 0,
         y: 0
       };
   
-      this.body = [];
-      this.bodyLength = 4;
-      for (let i = 0; i < this.bodyLength; i++) {
-        const segment = {
-          position: {
-            x: canvas.width / 2 + 100,
-            y: 200 + (i + 1) * 60
-          },
-          width: 40,
-          height: 40,
-          image: new Image()
-        };
-        segment.image.src = './img/body.png';
-        this.body.push(segment);
-      }
+      this.body = []
     }
   
     draw() {
       let direction = this.velocity.x;
       if (direction < 0) {
-        this.head.image.src = './img/left head.png';
+        this.head.image.src = this.head.headLeft
       } else if (direction > 0) {
-        this.head.image.src = './img/right head.png';
+        this.head.image.src = this.head.headRight
       }
       c.save()
       c.translate(this.head.position.x + this.head.width / 2, this.head.position.y + this.head.height / 2)
@@ -50,12 +39,6 @@ class Caterpillar {
       if (!caterpillar.body.length) { return }
   
       this.body.forEach((segment) => {
-        if (direction < 0) {
-          segment.image.src = './img/body left.png'
-        } else if (direction > 0) {
-          segment.image.src = './img/body right.png'
-        }
-  
         c.drawImage(segment.image, segment.position.x, segment.position.y, segment.width, segment.height);
       })
     }
