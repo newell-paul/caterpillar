@@ -51,9 +51,9 @@ class Caterpillar {
   
       this.body.forEach((segment) => {
         if (direction < 0) {
-          segment.image.src = './img/body left.png';
+          segment.image.src = './img/body left.png'
         } else if (direction > 0) {
-          segment.image.src = './img/body right.png';
+          segment.image.src = './img/body right.png'
         }
   
         c.drawImage(segment.image, segment.position.x, segment.position.y, segment.width, segment.height);
@@ -61,7 +61,7 @@ class Caterpillar {
     }
   
     update(deltaTime) {
-      let newPositionX = this.head.position.x + this.velocity.x;
+      let newPositionX = this.head.position.x + this.velocity.x
   
       if (newPositionX >= 0 && newPositionX + this.head.width <= canvas.width) {
         this.head.position.x = newPositionX;
@@ -70,12 +70,12 @@ class Caterpillar {
       if (!caterpillar.body.length) { return }
   
       for (let i = this.body.length - 1; i > 0; i--) {
-        this.body[i].position.x += (this.body[i - 1].position.x - this.body[i].position.x) * 0.1;
-        this.body[i].position.y = this.body[i - 1].position.y + (this.body[i - 1].height - 14);
+        this.body[i].position.x += (this.body[i - 1].position.x - this.body[i].position.x) * 0.1
+        this.body[i].position.y = this.body[i - 1].position.y + (this.body[i - 1].height - 14)
       }
   
-      this.body[0].position.x += (this.head.position.x - this.body[0].position.x) * 0.1;
-      this.body[0].position.y = this.head.position.y + (this.head.height - 14);
+      this.body[0].position.x += (this.head.position.x - this.body[0].position.x) * 0.1
+      this.body[0].position.y = this.head.position.y + (this.head.height - 14)
     }
   }
   
