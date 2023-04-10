@@ -51,11 +51,11 @@ function gameLoop(timestamp) {
   }
 
   if (!gameOver) {
-    handleInput(keys);
-    updateObjects(deltaTime);
-    checkCollisions();
-    drawObjects();
-    requestAnimationFrame(gameLoop);
+    handleInput(keys)
+    updateObjects(deltaTime)
+    checkCollisions()
+    drawObjects()
+    requestAnimationFrame(gameLoop)
   } else {
     spinHead(timestamp)
   }
@@ -78,7 +78,7 @@ document.addEventListener('keydown', (event) => {
     return
   }
 
-  keys[event.key] = true;
+  keys[event.key] = true
 });
 
 gameLoop()

@@ -5,12 +5,16 @@ const audio = {
       src: 'audio/pop.wav'
   }),
   leafBite: new Howl({
-    src: 'audio/leafBite.wav'
+    src: 'audio/leafBite2.wav'
   }),
   appleBite: new Howl({
     src: 'audio/appleBite.wav'
   }),
   crash: new Howl({
     src: 'audio/crash.wav'
+  }),
+  start: new Howl({
+    src: 'audio/start.wav'
   })
+
 }  

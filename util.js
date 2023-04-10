@@ -36,6 +36,11 @@ function handleInput(keys) {
 function updateObjects(deltaTime) {
   caterpillar.update(deltaTime)
 
+  if (caterpillar.mouthOpen && lastTimestamp - caterpillar.mouthOpenTimestamp >= caterpillar.mouthOpenDuration) {
+    caterpillar.mouthOpen = false;
+    caterpillar.head.rotation = 0
+  }
+
   for (let leaf of leafs) {
     leaf.update(deltaTime)
   }
@@ -53,7 +58,9 @@ function checkCollisions() {
       audio.leafBite.play()
       leaf.position.y = 10
       score++;
-      updateScoreDisplay(score);
+      updateScoreDisplay(score)
+      caterpillar.mouthOpen = true
+      caterpillar.mouthOpenTimestamp = lastTimestamp
       continue;
     }
   }
@@ -64,6 +71,8 @@ function checkCollisions() {
     apple.position.x = Math.random() * canvas.width
     score += 5
     updateScoreDisplay(score)
+    caterpillar.mouthOpen = true
+    caterpillar.mouthOpenTimestamp = lastTimestamp
   }
 }
 
