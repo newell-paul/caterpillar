@@ -12,7 +12,7 @@ class Leaf extends GameObject {
         let waveMovement = Math.sin(waveOffset) * waveAmplitude
         let newPositionX = this.position.x + this.velocity.x + waveMovement
       
-        if (newPositionY >= 0 && newPositionY + this.height <= canvas.height) {
+        if (newPositionY + this.height <= canvas.height) {
           this.position.y = newPositionY
         } else {
           this.position.y = 0

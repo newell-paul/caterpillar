@@ -6,10 +6,10 @@ class Apple extends GameObject {
     update(deltaTime) {
         let newPositionY = this.position.y + this.velocity.y
       
-        if (newPositionY >= 0 && newPositionY + this.height <= canvas.height) {
+        if (newPositionY + this.height <= canvas.height) {
           this.position.y = newPositionY
         } else {
-          this.position.y = 0
+          this.position.y = -2000
           this.position.x = Math.random() * canvas.width
         }
       }

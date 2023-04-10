@@ -1,5 +1,5 @@
 function collision(rectangle1, rectangle2, padding1 = 0, padding2 = [0, 0]) {
-  const [padding2X, padding2Y] = Array.isArray(padding2) ? padding2 : [padding2, padding2];
+  const [padding2X, padding2Y] = Array.isArray(padding2) ? padding2 : [padding2, padding2]
 
   return !(
     rectangle1.head.position.x + rectangle1.head.width - padding1 < rectangle2.position.x + padding2X ||
@@ -60,7 +60,7 @@ function checkCollisions() {
 
   if (collision(caterpillar, apple)) {
     audio.appleBite.play()
-    apple.position.y = 10
+    apple.position.y = -100
     apple.position.x = Math.random() * canvas.width
     score += 5
     updateScoreDisplay(score)
@@ -73,7 +73,10 @@ function mushroomCollide() {
       crash()
       shroom.position.y = -20
 
-      if (!caterpillar.body.length) { return true }
+      if (!caterpillar.body.length) { 
+        audio.crash.play()
+        return true 
+      }
       audio.pop.play()
       caterpillar.body.pop()
     }
@@ -162,8 +165,8 @@ function easeOutElastic(x) {
 function addSegment() {
     const segment = {
       position: {
-        x: caterpillar.head.position.x / 2 + 80,
-        y: 200 + (caterpillar.bodyLength + 1) * 60
+        x: 0,
+        y: 0
       },
       width: 40,
       height: 40,
@@ -171,6 +174,7 @@ function addSegment() {
     };
     segment.image.src = './img/body.png'
     audio.pop.play()
+    console.log('hello')
     caterpillar.body.push(segment)
 }
 
@@ -178,7 +182,7 @@ function addSegments() {
   if (caterpillar.body.length < 4) {
     addSegment()
 
-    setTimeout(addSegments, 1000)
+    setTimeout(addSegments, 500)
   }
 }
 
@@ -186,7 +190,7 @@ function titleScreen() {
   c.fillStyle = 'black';
   c.fillRect(0, 0, canvas.width, canvas.height);
 
-  c.font = '60px ArcadeClassic, sans-serif';
+  c.font = '48px ArcadeClassic, sans-serif';
   c.fillStyle = 'green';
   c.textAlign = 'center';
   c.fillText('Caterpillar 2', canvas.width / 2, canvas.height / 2);

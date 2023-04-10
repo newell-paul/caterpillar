@@ -9,5 +9,8 @@ const audio = {
   }),
   appleBite: new Howl({
     src: 'audio/appleBite.wav'
+  }),
+  crash: new Howl({
+    src: 'audio/crash.wav'
   })
 }  
