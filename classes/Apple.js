@@ -10,7 +10,8 @@ class Apple extends GameObject {
           this.position.y = newPositionY
         } else {
           this.position.y = -2000
-          this.position.x = Math.random() * canvas.width
+          this.position.x = (canvas.width * 0.15) + (Math.random() * (canvas.width * 0.7))
+
         }
       }
   
