@@ -1,51 +1,60 @@
 <!DOCTYPE html>
-<style>
-  @font-face {
-    font-family: 'ArcadeClassic';
-    src: url('./classes/fonts/arcadeclassic.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-  }
+<html>
+<head>
+  <style>
+    @font-face {
+      font-family: 'ArcadeClassic';
+      src: url('./classes/fonts/arcadeclassic.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
 
-  html, body {
+    html, body {
     margin: 0;
     padding: 0;
     overflow: hidden;
     font-family: 'ArcadeClassic', sans-serif;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
-  #canvas {
-    width: 650px;
-    height: 500px;
-    border: 1px solid black;
-  }
+    #canvas {
+      width: 500px;
+      height: 450px;
+      border: 1px solid black;
+    }
 
-  canvas {
-    display: block;
+    canvas {
+      display: block;
+    }
+
+    #game-container {
+      position: relative;
+      display: inline-flex;
   }
-</style>
-<html>
-<head>
-  <style>
     #score-container {
       position: absolute;
       top: 10px;
       right: 10px;
       font-size: 24px;
       color: #e7df64;
-      font-family: 'ArcadeClassic', sans-serif
+      font-family: 'ArcadeClassic', sans-serif;
     }
 
     canvas {
       display: block;
       margin: auto;
-      background-color: #286c81
+      background-color: #286c81;
     }
   </style>
 </head>
 <body>
-  <div id="score-container">00000</div>
-  <canvas id="canvas" width="500" height="450"></canvas>
+  <div id="game-container">
+    <div id="score-container">00000</div>
+    <canvas id="canvas" width="500" height="450"></canvas>
+  </div>
 
   <script
     src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"

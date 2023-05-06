@@ -5,30 +5,30 @@ canvas.width = innerWidth
 canvas.height = innerHeight
 
 const leafMap = [
-    { x: 10, y: -1000, size: 20 },
-    { x: 80, y: -1500, size: 35 },
-    { x: 130, y: -1400, size: 35 },
-    { x: 200, y: -2500, size: 20 },
-    { x: 300, y: -1800, size: 20 },
-    { x: 340, y: -1500, size: 35 },
-    { x: 380, y: -1200, size: 35 },
+    { x: .1, y: -1000, size: 20 },
+    { x: .2, y: -1500, size: 35 },
+    { x: .3, y: -1400, size: 35 },
+    { x: .4, y: -2500, size: 20 },
+    { x: .6, y: -1800, size: 20 },
+    { x: .8, y: -1500, size: 35 },
+    { x: .9, y: -1200, size: 35 },
 ]
 
 const mushroomMap = [
-    { x: 20, y: -1400, size: 30 },
-    { x: 80, y: -2400, size: 55 },
-    { x: 130, y: -1500, size: 30 },
-    { x: 180, y: -2000, size: 55 },
-    { x: 220, y: -1700, size: 30 },
-    { x: 280, y: -2200, size: 30 },
-    { x: 320, y: -1400, size: 55 },
-    { x: 370, y: -2200, size: 55 },
-    { x: 410, y: -1450, size: 30 },
+    { x: .1, y: -1400, size: 30 },
+    { x: .2, y: -2400, size: 55 },
+    { x: .3, y: -1500, size: 30 },
+    { x: .4, y: -2000, size: 55 },
+    { x: .5, y: -1700, size: 30 },
+    { x: .6, y: -2200, size: 30 },
+    { x: .8, y: -1400, size: 55 },
+    { x: .7, y: -2200, size: 55 },
+    { x: .9, y: -1450, size: 30 },
 ]
 
 const caterpillar = new Caterpillar()
-const leafs = leafMap.map((obj) => new Leaf(obj.x, obj.y, obj.size))
-const shrooms = mushroomMap.map((obj) => new Mushroom(obj.x, obj.y, obj.size))
+const leafs = leafMap.map((obj) => new Leaf(obj.x * canvas.width, obj.y, obj.size))
+const shrooms = mushroomMap.map((obj) => new Mushroom(obj.x * canvas.width, obj.y, obj.size))
 const apple = new Apple(150, -3000, 40)
 
 let lastTimestamp = 0
@@ -87,5 +87,26 @@ document.addEventListener('keydown', (event) => {
 
     keys[event.key] = true
 })
+
+function setCanvasSize() {
+    const aspectRatio = 500 / 450;
+    const windowHeight = window.innerHeight;
+    const windowWidth = window.innerWidth;
+    let newWidth, newHeight;
+
+    if (windowWidth / windowHeight < aspectRatio) {
+        newWidth = windowWidth;
+        newHeight = newWidth / aspectRatio;
+    } else {
+        newHeight = windowHeight;
+        newWidth = newHeight * aspectRatio;
+    }
+
+    canvas.width = newWidth;
+    canvas.height = newHeight;
+}
+
+window.addEventListener('resize', setCanvasSize);
+setCanvasSize();
 
 gameLoop()
