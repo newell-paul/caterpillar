@@ -80,7 +80,8 @@ function checkCollisions() {
         apple.position.x =
             canvas.width * 0.15 + Math.random() * (canvas.width * 0.7)
 
-        score += 5
+        score += appleScore
+        appleScore += 5
         updateScoreDisplay(score)
         caterpillar.mouthOpen = true
         caterpillar.mouthOpenTimestamp = lastTimestamp

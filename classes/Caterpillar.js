@@ -114,9 +114,4 @@ class Caterpillar {
             (this.head.position.x - this.body[0].position.x) * 0.1
         this.body[0].position.y = this.head.position.y + (this.head.height - 14)
     }
-
-    reset() {
-        this.body = []; // Reset the body array
-        // this.head = new Segment(this.canvas, this.head.position.x, this.head.position.y, null);
-    }
 }    

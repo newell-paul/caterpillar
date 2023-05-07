@@ -5,72 +5,75 @@ canvas.width = 500
 canvas.height = 450
 
 const leafMap = [
-    { x: .1, y: -1000, size: 20 },
-    { x: .2, y: -1500, size: 35 },
-    { x: .3, y: -1400, size: 35 },
-    { x: .4, y: -2500, size: 20 },
-    { x: .6, y: -1800, size: 20 },
-    { x: .8, y: -1500, size: 35 },
-    { x: .9, y: -1200, size: 35 },
+    { x: 0.1, y: -1000, size: 20 },
+    { x: 0.2, y: -1500, size: 35 },
+    { x: 0.3, y: -1400, size: 35 },
+    { x: 0.4, y: -2500, size: 20 },
+    { x: 0.6, y: -1800, size: 20 },
+    { x: 0.8, y: -1500, size: 35 },
+    { x: 0.9, y: -1200, size: 35 },
 ]
 
 const mushroomMap = [
-    { x: .1, y: -1400, size: 30 },
-    { x: .2, y: -2400, size: 55 },
-    { x: .3, y: -1500, size: 30 },
-    { x: .4, y: -2000, size: 55 },
-    { x: .5, y: -1700, size: 30 },
-    { x: .6, y: -2200, size: 30 },
-    { x: .8, y: -1400, size: 55 },
-    { x: .7, y: -2200, size: 55 },
-    { x: .9, y: -1450, size: 30 },
+    { x: 0.1, y: -1400, size: 30 },
+    { x: 0.2, y: -2400, size: 55 },
+    { x: 0.3, y: -1500, size: 30 },
+    { x: 0.4, y: -2000, size: 55 },
+    { x: 0.5, y: -1700, size: 30 },
+    { x: 0.6, y: -2200, size: 30 },
+    { x: 0.8, y: -1400, size: 55 },
+    { x: 0.7, y: -2200, size: 55 },
+    { x: 0.9, y: -1450, size: 30 },
 ]
 
-const caterpillar = new Caterpillar(canvas)
-const leafs = leafMap.map((obj) => new Leaf(obj.x * canvas.width, obj.y, obj.size))
-const shrooms = mushroomMap.map((obj) => new Mushroom(obj.x * canvas.width, obj.y, obj.size))
-const apple = new Apple(150, -3000, 40)
+let caterpillar = new Caterpillar(canvas)
+let leafs = leafMap.map(
+    (obj) => new Leaf(obj.x * canvas.width, obj.y, obj.size)
+)
+let shrooms = mushroomMap.map(
+    (obj) => new Mushroom(obj.x * canvas.width, obj.y, obj.size)
+)
+let apple = new Apple(150, -3000, 40)
 
 let lastTimestamp = 0
 let lastEventTimestamp
 let score = 0
-let gameOver = false
+let appleScore = 5
 let mushroomSpeed = 5
 let gameState = 'titleScreen'
 
 function gameLoop(timestamp) {
     if (gameState === 'titleScreen') {
-        titleScreen();
-        requestAnimationFrame(gameLoop);
-        return;
+        titleScreen()
+        requestAnimationFrame(gameLoop)
+        return
     }
-    const deltaTime = timestamp - lastTimestamp;
-    lastTimestamp = timestamp;
+    const deltaTime = timestamp - lastTimestamp
+    lastTimestamp = timestamp
 
     if (mushroomCollide()) {
-        gameState = 'gameOver';
+        gameState = 'gameOver'
     }
 
     if (!lastEventTimestamp || timestamp - lastEventTimestamp >= 15000) {
         shrooms.push(
             new Mushroom(caterpillar.head.position.x, -1700, 35, mushroomSpeed)
-        );
-        lastEventTimestamp = timestamp;
+        )
+        lastEventTimestamp = timestamp
     }
-    mushroomSpeed += 0.001; // Slowly ramp up the difficulty
+    mushroomSpeed += 0.0005 // Slowly ramp up the difficulty
 
     if (gameState === 'gameplay') {
-        handleInput(keys);
-        updateObjects(deltaTime);
-        checkCollisions();
-        drawObjects();
+        handleInput(keys)
+        updateObjects(deltaTime)
+        checkCollisions()
+        drawObjects()
     } else if (gameState === 'gameOver') {
-        drawGameOver();
+        drawGameOver()
     }
 
-    requestAnimationFrame(gameLoop); // Move this line outside the conditional blocks
+    requestAnimationFrame(gameLoop)
 }
-
 
 const keys = {}
 document.addEventListener('keydown', (event) => {
@@ -84,22 +87,28 @@ let titleScreenActive = true
 
 document.addEventListener('keydown', (event) => {
     if (gameState === 'titleScreen') {
-        gameState = 'gameplay';
-        resetGame();
-        addSegments(); // Call addSegments() after resetting the game.
+        gameState = 'gameplay'
+        resetGame()
+        score = 0
+        updateScoreDisplay(score)
+        addSegments()
     } else if (gameState === 'gameOver') {
-        gameState = 'titleScreen';
+        setTimeout(() => { gameState = 'titleScreen'} , 500)
     }
-    keys[event.key] = true;
-});
+    keys[event.key] = true
+})
 
 function resetGame() {
-    // Reset game variables and objects here
-    gameOver = false;
-    score = 0;
-    mushroomSpeed = 5;
-    // Add more reset logic as needed
-    caterpillar.reset()
+    mushroomSpeed = 5
+    appleScore = 5
+    leafs = leafMap.map(
+        (obj) => new Leaf(obj.x * canvas.width, obj.y, obj.size)
+    )
+    shrooms = mushroomMap.map(
+        (obj) => new Mushroom(obj.x * canvas.width, obj.y, obj.size)
+    )
+    apple = new Apple(150, -3000, 40)
+    caterpillar = new Caterpillar(canvas)
 }
 
 gameLoop()
