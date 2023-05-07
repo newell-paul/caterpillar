@@ -1,8 +1,10 @@
 const canvas = document.getElementById('canvas')
 const c = canvas.getContext('2d')
 
-canvas.width = innerWidth
-canvas.height = innerHeight
+canvas.width = 500
+canvas.height = 450
+
+console.log(canvas.width)
 
 const leafMap = [
     { x: .1, y: -1000, size: 20 },
@@ -26,7 +28,7 @@ const mushroomMap = [
     { x: .9, y: -1450, size: 30 },
 ]
 
-const caterpillar = new Caterpillar()
+const caterpillar = new Caterpillar(canvas)
 const leafs = leafMap.map((obj) => new Leaf(obj.x * canvas.width, obj.y, obj.size))
 const shrooms = mushroomMap.map((obj) => new Mushroom(obj.x * canvas.width, obj.y, obj.size))
 const apple = new Apple(150, -3000, 40)
@@ -64,7 +66,8 @@ function gameLoop(timestamp) {
         drawObjects()
         requestAnimationFrame(gameLoop)
     } else {
-        spinHead(timestamp)
+        drawGameOver()
+        titleScreenActive = true
     }
 }
 
@@ -87,26 +90,5 @@ document.addEventListener('keydown', (event) => {
 
     keys[event.key] = true
 })
-
-function setCanvasSize() {
-    const aspectRatio = 500 / 450;
-    const windowHeight = window.innerHeight;
-    const windowWidth = window.innerWidth;
-    let newWidth, newHeight;
-
-    if (windowWidth / windowHeight < aspectRatio) {
-        newWidth = windowWidth;
-        newHeight = newWidth / aspectRatio;
-    } else {
-        newHeight = windowHeight;
-        newWidth = newHeight * aspectRatio;
-    }
-
-    canvas.width = newWidth;
-    canvas.height = newHeight;
-}
-
-window.addEventListener('resize', setCanvasSize);
-setCanvasSize();
 
 gameLoop()

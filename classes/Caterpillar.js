@@ -1,9 +1,9 @@
 class Caterpillar {
-    constructor() {
+    constructor(canvas) {
         this.head = {
             position: {
                 x: canvas.width / 2 - 20,
-                y: 350,
+                y: canvas.height - 150
             },
             width: 45,
             height: 45,
@@ -28,6 +28,9 @@ class Caterpillar {
         }
 
         this.body = []
+
+        console.log(this.head.position.x)
+        console.log(canvas.width)
     }
 
     draw() {
@@ -74,7 +77,7 @@ class Caterpillar {
         )
         c.restore()
 
-        if (!caterpillar.body.length) {
+        if (!this.body.length) {
             return
         }
 
@@ -99,7 +102,7 @@ class Caterpillar {
             this.head.position.x = newPositionX
         }
 
-        if (!caterpillar.body.length) {
+        if (!this.body.length) {
             return
         }
 
@@ -114,4 +117,4 @@ class Caterpillar {
             (this.head.position.x - this.body[0].position.x) * 0.1
         this.body[0].position.y = this.head.position.y + (this.head.height - 14)
     }
-}
+}    

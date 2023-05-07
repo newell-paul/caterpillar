@@ -149,23 +149,6 @@ function crash() {
     }
 }
 
-function spinHead(timestamp) {
-    const deltaTime = timestamp - lastTimestamp
-    lastTimestamp = timestamp
-
-    c.clearRect(0, 0, canvas.width, canvas.height)
-    drawObjects()
-    drawGameOver()
-
-    caterpillar.head.rotation += 0.1
-    caterpillar.head.height += 0.5
-    caterpillar.head.width += 0.5
-
-    if (caterpillar.head.rotation < 4 * Math.PI) {
-        requestAnimationFrame(spinHead)
-    }
-}
-
 function drawGameOver() {
     c.font = "40px 'ArcadeClassic', sans-serif"
     c.fillStyle = 'red'
@@ -221,5 +204,13 @@ function titleScreen() {
         'Press any key to start',
         canvas.width / 2,
         canvas.height / 2 + 50
+    )
+
+    c.fillStyle = 'yellow'
+    c.font = '16px ArcadeClassic, sans-serif'
+    c.fillText(
+        'Game created by Paul Newell 2023',
+        canvas.width / 2,
+        canvas.height - 80
     )
 }
