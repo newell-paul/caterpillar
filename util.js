@@ -207,11 +207,19 @@ function titleScreen() {
         canvas.height / 2 + 50
     )
 
+    c.font = '24px ArcadeClassic';
+    c.fillStyle = 'cyan';
+    c.fillText(
+        `HIGH  ${padScore(score, 5)}`, 
+        80,
+        30
+    )
+
     c.fillStyle = 'yellow'
     c.font = '16px ArcadeClassic, sans-serif'
     c.fillText(
         'Game created by Paul Newell 2023',
         canvas.width / 2,
-        canvas.height - 80
+        canvas.height - 40
     )
 }

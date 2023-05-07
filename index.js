@@ -38,6 +38,7 @@ let apple = new Apple(150, -3000, 40)
 let lastTimestamp = 0
 let lastEventTimestamp
 let score = 0
+let hiScore = 0
 let appleScore = 5
 let mushroomSpeed = 5
 let gameState = 'titleScreen'
@@ -89,6 +90,10 @@ document.addEventListener('keydown', (event) => {
     if (gameState === 'titleScreen') {
         gameState = 'gameplay'
         resetGame()
+        if (score > hiScore) {
+            hiScore = score
+          }
+          
         score = 0
         updateScoreDisplay(score)
         addSegments()
