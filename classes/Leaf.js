@@ -16,7 +16,7 @@ class Leaf extends GameObject {
         let waveOffset =
             this.position.y * waveFrequency + Date.now() * waveFrequency
         let waveMovement = Math.sin(waveOffset) * waveAmplitude
-        let newPositionX = this.position.x + this.velocity.x + waveMovement
+        let newPositionX = this.position.x + this.velocity.x + waveMovement * deltaTime / SPEED
 
         if (newPositionY + this.height <= canvas.height) {
             this.position.y = newPositionY
