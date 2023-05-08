@@ -62,7 +62,7 @@ function updateObjects(deltaTime) {
 }
 
 function checkCollisions() {
-    for (let leaf of leafs) {
+    for (const leaf of leafs) {
         if (collision(caterpillar, leaf, 10, [10, 2])) {
             audio.leafBite.play()
             leaf.position.y = 10
@@ -89,7 +89,7 @@ function checkCollisions() {
 }
 
 function mushroomCollide() {
-    for (let shroom of shrooms) {
+    for (const shroom of shrooms) {
         if (collision(caterpillar, shroom, 10, [10, 2])) {
             crash()
             shroom.position.y = -20
@@ -207,13 +207,9 @@ function titleScreen() {
         canvas.height / 2 + 50
     )
 
-    c.font = '24px ArcadeClassic';
-    c.fillStyle = 'cyan';
-    c.fillText(
-        `HIGH  ${padScore(hiScore, 5)}`, 
-        80,
-        30
-    )
+    c.font = '24px ArcadeClassic'
+    c.fillStyle = 'cyan'
+    c.fillText(`HIGH  ${padScore(hiScore, 5)}`, 80, 30)
 
     c.fillStyle = 'yellow'
     c.font = '16px ArcadeClassic, sans-serif'

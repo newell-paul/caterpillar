@@ -3,7 +3,7 @@ class Caterpillar {
         this.head = {
             position: {
                 x: canvas.width / 2 - 20,
-                y: canvas.height - 150
+                y: canvas.height - 150,
             },
             width: 45,
             height: 45,
@@ -31,7 +31,7 @@ class Caterpillar {
     }
 
     draw() {
-        let direction = this.velocity.x
+        const direction = this.velocity.x
 
         if (direction !== 0) {
             this.lastDirection = direction
@@ -90,7 +90,7 @@ class Caterpillar {
     }
 
     update(deltaTime) {
-        let newPositionX = this.head.position.x + this.velocity.x
+        const newPositionX = this.head.position.x + this.velocity.x
 
         if (
             newPositionX >= 0 &&
@@ -114,4 +114,4 @@ class Caterpillar {
             (this.head.position.x - this.body[0].position.x) * 0.1
         this.body[0].position.y = this.head.position.y + (this.head.height - 14)
     }
-}    
+}

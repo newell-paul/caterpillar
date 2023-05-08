@@ -1,74 +1,75 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <style>
-    @font-face {
-      font-family: 'ArcadeClassic';
-      src: url('./classes/fonts/arcadeclassic.ttf') format('truetype');
-      font-weight: normal;
-      font-style: normal;
-    }
+    <head>
+        <style>
+            @font-face {
+                font-family: 'ArcadeClassic';
+                src: url('./classes/fonts/arcadeclassic.ttf') format('truetype');
+                font-weight: normal;
+                font-style: normal;
+            }
 
-    html, body {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    font-family: 'ArcadeClassic', sans-serif;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+            html,
+            body {
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+                font-family: 'ArcadeClassic', sans-serif;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
 
-    #canvas {
-      width: 500px;
-      height: 450px;
-      border: 1px solid black;
-    }
+            #canvas {
+                width: 500px;
+                height: 450px;
+                border: 1px solid black;
+            }
 
-    canvas {
-      display: block;
-    }
+            canvas {
+                display: block;
+            }
 
-    #game-container {
-      position: relative;
-      display: inline-flex;
-  }
-    #score-container {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      font-size: 24px;
-      color: #e7df64;
-      font-family: 'ArcadeClassic', sans-serif;
-    }
+            #game-container {
+                position: relative;
+                display: inline-flex;
+            }
+            #score-container {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                font-size: 24px;
+                color: #e7df64;
+                font-family: 'ArcadeClassic', sans-serif;
+            }
 
-    canvas {
-      display: block;
-      margin: auto;
-      background-color: #286c81;
-    }
-  </style>
-</head>
-<body>
-  <div id="game-container">
-    <div id="score-container">00000</div>
-    <canvas id="canvas" width="500" height="450"></canvas>
-  </div>
+            canvas {
+                display: block;
+                margin: auto;
+                background-color: #286c81;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="game-container">
+            <div id="score-container">00000</div>
+            <canvas id="canvas" width="500" height="450"></canvas>
+        </div>
 
-  <script
-    src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"
-    integrity="sha512-6+YN/9o9BWrk6wSfGxQGpt3EUK6XeHi6yeHV+TYD2GR0Sj/cggRpXr1BrAQf0as6XslxomMUxXp2vIl+fv0QRA=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  ></script>
-  <script src="audio.js"></script>
-  <script src="util.js"></script>
-  <script src="./classes/GameObject.js"></script>
-  <script src="./classes/Leaf.js"></script>
-  <script src="./classes/Mushroom.js"></script>
-  <script src="./classes/Apple.js"></script>
-  <script src="./classes/Caterpillar.js"></script>
-  <script src="index.js"></script>
-</body>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"
+            integrity="sha512-6+YN/9o9BWrk6wSfGxQGpt3EUK6XeHi6yeHV+TYD2GR0Sj/cggRpXr1BrAQf0as6XslxomMUxXp2vIl+fv0QRA=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        ></script>
+        <script src="audio.js"></script>
+        <script src="util.js"></script>
+        <script src="./classes/GameObject.js"></script>
+        <script src="./classes/Leaf.js"></script>
+        <script src="./classes/Mushroom.js"></script>
+        <script src="./classes/Apple.js"></script>
+        <script src="./classes/Caterpillar.js"></script>
+        <script src="index.js"></script>
+    </body>
 </html>
