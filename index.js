@@ -89,15 +89,13 @@ document.addEventListener('keydown', (event) => {
     if (gameState === 'titleScreen') {
         gameState = 'gameplay'
         resetGame()
+        updateScoreDisplay(score)
+        addSegments()
+    } else if (gameState === 'gameOver') {
         if (score > hiScore) {
             hiScore = score
             localStorage.setItem('hiScore', hiScore)
         }
-          
-        // score = 0
-        updateScoreDisplay(score)
-        addSegments()
-    } else if (gameState === 'gameOver') {
         setTimeout(() => { gameState = 'titleScreen'} , 500)
     }
     keys[event.key] = true
