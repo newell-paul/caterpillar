@@ -5,7 +5,7 @@ class Leaf extends GameObject {
             y,
             size,
             './img/leaf.png',
-            Math.floor(Math.random() * (6 - 4 + 1)) + 4
+            Math.floor(Math.random() * (7 - 4 + 1)) + 4
         )
     }
 
