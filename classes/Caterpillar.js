@@ -106,9 +106,9 @@ class Caterpillar {
 
         for (let i = this.body.length - 1; i > 0; i--) {
             this.body[i].position.x +=
-                (this.body[i - 1].position.x - this.body[i].position.x) * 0.1 * deltaTime / SPEED
+                (this.body[i - 1].position.x - this.body[i].position.x) * 0.1
             this.body[i].position.y =
-                this.body[i - 1].position.y + (this.body[i - 1].height - 14) * deltaTime / SPEED
+                this.body[i - 1].position.y + (this.body[i - 1].height - 14)
         }
 
         this.body[0].position.x +=
