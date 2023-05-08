@@ -11,11 +11,15 @@ class Caterpillar {
             image: new Image(),
         }
 
-        this.head.headLeft = './img/left head.png'
-        this.head.headRight = './img/right head.png'
-        this.head.headLeftOpen = './img/left head open.png'
-        this.head.headRightOpen = './img/right head open.png'
-        this.head.image.src = this.head.headRight
+        this.head.headLeft = new Image()
+        this.head.headLeft.src = './img/left head.png'
+        this.head.headRight = new Image()
+        this.head.headRight.src = './img/right head.png'
+        this.head.headLeftOpen = new Image()
+        this.head.headLeftOpen.src = './img/left head open.png'
+        this.head.headRightOpen = new Image()
+        this.head.headRightOpen.src = './img/right head open.png'
+        this.head.image = this.head.headRight
 
         this.mouthOpen = false
         this.mouthOpenDuration = 150
@@ -39,24 +43,24 @@ class Caterpillar {
         }
 
         if (direction < 0) {
-            this.head.image.src = this.head.headLeft
+            this.head.image = this.head.headLeft
         } else if (direction > 0) {
-            this.head.image.src = this.head.headRight
+            this.head.image = this.head.headRight
         }
 
         if (this.mouthOpen) {
             if (this.lastDirection < 0) {
                 this.head.rotation = 0.1
-                this.head.image.src = this.head.headLeftOpen
+                this.head.image = this.head.headLeftOpen
             } else {
                 this.head.rotation = -0.1
-                this.head.image.src = this.head.headRightOpen
+                this.head.image = this.head.headRightOpen
             }
         } else {
             if (this.lastDirection < 0) {
-                this.head.image.src = this.head.headLeft
+                this.head.image = this.head.headLeft
             } else {
-                this.head.image.src = this.head.headRight
+                this.head.image = this.head.headRight
             }
         }
 
@@ -91,7 +95,8 @@ class Caterpillar {
     }
 
     update(deltaTime) {
-        const newPositionX = this.head.position.x + this.velocity.x * deltaTime / SPEED
+        const newPositionX =
+            this.head.position.x + (this.velocity.x * deltaTime) / SPEED
 
         if (
             newPositionX >= 0 &&
