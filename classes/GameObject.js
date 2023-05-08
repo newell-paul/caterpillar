@@ -15,7 +15,7 @@ class GameObject {
     }
 
     update(deltaTime) {
-        let newPositionY = this.position.y + this.velocity.y
+        let newPositionY = this.position.y + this.velocity.y * deltaTime / SPEED
 
         if (newPositionY >= 0 && newPositionY + this.height <= canvas.height) {
             this.position.y = newPositionY

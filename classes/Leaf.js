@@ -10,7 +10,7 @@ class Leaf extends GameObject {
     }
 
     update(deltaTime) {
-        let newPositionY = this.position.y + this.velocity.y
+        let newPositionY = this.position.y + this.velocity.y * deltaTime / SPEED
         let waveAmplitude = 2
         let waveFrequency = 0.002
         let waveOffset =

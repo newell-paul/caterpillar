@@ -91,7 +91,7 @@ class Caterpillar {
     }
 
     update(deltaTime) {
-        const newPositionX = this.head.position.x + this.velocity.x
+        const newPositionX = this.head.position.x + this.velocity.x * deltaTime / SPEED
 
         if (
             newPositionX >= 0 &&

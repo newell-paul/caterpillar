@@ -4,7 +4,7 @@ class Apple extends GameObject {
     }
 
     update(deltaTime) {
-        let newPositionY = this.position.y + this.velocity.y
+        let newPositionY = this.position.y + this.velocity.y * deltaTime / SPEED
 
         if (newPositionY + this.height <= canvas.height) {
             this.position.y = newPositionY

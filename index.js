@@ -4,6 +4,8 @@ const c = canvas.getContext('2d')
 canvas.width = 500
 canvas.height = 450
 
+const SPEED = 18
+
 const leafMap = [
     { x: 0.1, y: -1000, size: 20 },
     { x: 0.2, y: -1500, size: 35 },
