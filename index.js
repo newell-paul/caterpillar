@@ -47,8 +47,6 @@ let gameState = 'titleScreen'
 function gameLoop(timestamp) {
     if (gameState === 'titleScreen') {
         titleScreen()
-        requestAnimationFrame(gameLoop)
-        return
     }
     const deltaTime = timestamp - lastTimestamp
     lastTimestamp = timestamp
@@ -85,8 +83,6 @@ document.addEventListener('keyup', (event) => {
     keys[event.key] = false
 })
 
-let titleScreenActive = true
-
 document.addEventListener('keydown', (event) => {
     if (gameState === 'titleScreen') {
         gameState = 'gameplay'
@@ -98,7 +94,7 @@ document.addEventListener('keydown', (event) => {
             hiScore = score
             localStorage.setItem('hiScore', hiScore)
         }
-        setTimeout(() => { gameState = 'titleScreen'} , 500)
+        gameState = 'titleScreen'
     }
     keys[event.key] = true
 })
