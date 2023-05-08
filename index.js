@@ -38,7 +38,6 @@ let apple = new Apple(150, -3000, 40)
 let lastTimestamp = 0
 let lastEventTimestamp
 let score = 0
-let hiScore = 0
 let appleScore = 5
 let mushroomSpeed = 5
 let gameState = 'titleScreen'
@@ -92,9 +91,10 @@ document.addEventListener('keydown', (event) => {
         resetGame()
         if (score > hiScore) {
             hiScore = score
-          }
+            localStorage.setItem('hiScore', hiScore)
+        }
           
-        score = 0
+        // score = 0
         updateScoreDisplay(score)
         addSegments()
     } else if (gameState === 'gameOver') {
@@ -102,18 +102,5 @@ document.addEventListener('keydown', (event) => {
     }
     keys[event.key] = true
 })
-
-function resetGame() {
-    mushroomSpeed = 5
-    appleScore = 5
-    leafs = leafMap.map(
-        (obj) => new Leaf(obj.x * canvas.width, obj.y, obj.size)
-    )
-    shrooms = mushroomMap.map(
-        (obj) => new Mushroom(obj.x * canvas.width, obj.y, obj.size)
-    )
-    apple = new Apple(150, -3000, 40)
-    caterpillar = new Caterpillar(canvas)
-}
 
 gameLoop()

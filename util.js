@@ -210,7 +210,7 @@ function titleScreen() {
     c.font = '24px ArcadeClassic';
     c.fillStyle = 'cyan';
     c.fillText(
-        `HIGH  ${padScore(score, 5)}`, 
+        `HIGH  ${padScore(hiScore, 5)}`, 
         80,
         30
     )
@@ -222,4 +222,22 @@ function titleScreen() {
         canvas.width / 2,
         canvas.height - 40
     )
+}
+
+let hiScore = localStorage.getItem('hiScore') || 0
+
+function resetGame() {
+    mushroomSpeed = 5
+    appleScore = 5
+    score = 0
+    hiScore = localStorage.getItem('hiScore') || 0
+
+    leafs = leafMap.map(
+        (obj) => new Leaf(obj.x * canvas.width, obj.y, obj.size)
+    )
+    shrooms = mushroomMap.map(
+        (obj) => new Mushroom(obj.x * canvas.width, obj.y, obj.size)
+    )
+    apple = new Apple(150, -3000, 40)
+    caterpillar = new Caterpillar(canvas)
 }
