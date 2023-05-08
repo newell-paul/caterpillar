@@ -90,7 +90,7 @@ document.addEventListener('keydown', (event) => {
         gameState = 'gameplay'
         resetGame()
         updateScoreDisplay(score)
-        addSegments()
+        caterpillar.addSegments()
     } else if (gameState === 'gameOver') {
         if (score > hiScore) {
             hiScore = score

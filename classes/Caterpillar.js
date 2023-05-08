@@ -27,6 +27,7 @@ class Caterpillar {
             y: 0,
         }
 
+        this.bodyImage = './img/body.png'
         this.body = []
     }
 
@@ -113,5 +114,30 @@ class Caterpillar {
         this.body[0].position.x +=
             (this.head.position.x - this.body[0].position.x) * 0.1
         this.body[0].position.y = this.head.position.y + (this.head.height - 14)
+    }
+
+    addSegment() {
+        const segment = {
+            position: {
+                x: 0,
+                y: 0,
+            },
+            width: 40,
+            height: 40,
+            image: new Image(),
+        }
+        segment.image.src = this.bodyImage
+        audio.pop.play()
+        this.body.push(segment)
+    }
+
+    addSegments() {
+        if (this.body.length < 4) {
+            this.addSegment()
+
+            setTimeout(() => {
+                this.addSegments()
+            }, 500)
+        }
     }
 }

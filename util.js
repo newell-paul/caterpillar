@@ -167,28 +167,7 @@ function easeOutElastic(x) {
         : Math.pow(2, -10 * x) * Math.sin((x * 10 - 0.75) * c4) + 1
 }
 
-function addSegment() {
-    const segment = {
-        position: {
-            x: 0,
-            y: 0,
-        },
-        width: 40,
-        height: 40,
-        image: new Image(),
-    }
-    segment.image.src = './img/body.png'
-    audio.pop.play()
-    caterpillar.body.push(segment)
-}
 
-function addSegments() {
-    if (caterpillar.body.length < 4) {
-        addSegment()
-
-        setTimeout(addSegments, 500)
-    }
-}
 
 function titleScreen() {
     c.fillStyle = 'black'
