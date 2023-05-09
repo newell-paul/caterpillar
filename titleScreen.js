@@ -36,8 +36,8 @@ function titleScreen() {
     c.font = '24px ArcadeClassic'
     c.fillStyle = 'cyan'
     c.fillText(`1 point`, 250, 340)
-    c.fillText(`5 points  ++`, 275, 387)
+    c.fillText(`5 points  ++`, 275, 389)
 
-    c.drawImage(leafImage, 150, 315, 30, 30)
-    c.drawImage(appleImage, 150, 360, 30, 30)
+    c.drawImage(leafImage, 150, 312, 40, 40)
+    c.drawImage(appleImage, 150, 360, 40, 40)
 }
