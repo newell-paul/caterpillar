@@ -4,7 +4,8 @@ class Apple extends GameObject {
     }
 
     update(deltaTime) {
-        let newPositionY = this.position.y + this.velocity.y * deltaTime / SPEED
+        let newPositionY =
+            this.position.y + (this.velocity.y * deltaTime) / SPEED
 
         if (newPositionY + this.height <= canvas.height) {
             this.position.y = newPositionY
@@ -16,23 +17,25 @@ class Apple extends GameObject {
     }
 
     draw() {
-        let waveFrequency = 0.001
-        let waveOffset = this.position.y * waveFrequency
-        let rotationAngle = Math.sin(waveOffset) * (Math.PI / 0.3)
+        if (this.isVisible()) {
+            let waveFrequency = 0.001
+            let waveOffset = this.position.y * waveFrequency
+            let rotationAngle = Math.sin(waveOffset) * (Math.PI / 0.3)
 
-        c.save()
-        c.translate(
-            this.position.x + this.width / 2,
-            this.position.y + this.height / 2
-        )
-        c.rotate(rotationAngle)
-        c.drawImage(
-            this.image,
-            -this.width / 2,
-            -this.height / 2,
-            this.width,
-            this.height
-        )
-        c.restore()
+            c.save()
+            c.translate(
+                this.position.x + this.width / 2,
+                this.position.y + this.height / 2
+            )
+            c.rotate(rotationAngle)
+            c.drawImage(
+                this.image,
+                -this.width / 2,
+                -this.height / 2,
+                this.width,
+                this.height
+            )
+            c.restore()
+        }
     }
 }

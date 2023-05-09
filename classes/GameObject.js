@@ -12,10 +12,19 @@ class GameObject {
             x: 0,
             y: velocityY,
         }
+        this.isVisible = function () {
+            return (
+                this.position.x + this.width >= 0 &&
+                this.position.x <= canvas.width &&
+                this.position.y + this.height >= 0 &&
+                this.position.y <= canvas.height
+            )
+        }
     }
 
     update(deltaTime) {
-        let newPositionY = this.position.y + this.velocity.y * deltaTime / SPEED
+        let newPositionY =
+            this.position.y + (this.velocity.y * deltaTime) / SPEED
 
         if (newPositionY >= 0 && newPositionY + this.height <= canvas.height) {
             this.position.y = newPositionY

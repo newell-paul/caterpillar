@@ -5,18 +5,22 @@ class Leaf extends GameObject {
             y,
             size,
             './img/leaf.png',
-            Math.floor(Math.random() * (7 - 4 + 1)) + 4
+            Math.floor(Math.random() * (8 - 4 + 1)) + 4
         )
     }
 
     update(deltaTime) {
-        let newPositionY = this.position.y + this.velocity.y * deltaTime / SPEED
+        let newPositionY =
+            this.position.y + (this.velocity.y * deltaTime) / SPEED
         let waveAmplitude = 2
         let waveFrequency = 0.002
         let waveOffset =
             this.position.y * waveFrequency + Date.now() * waveFrequency
         let waveMovement = Math.sin(waveOffset) * waveAmplitude
-        let newPositionX = this.position.x + this.velocity.x + waveMovement * deltaTime / SPEED
+        let newPositionX =
+            this.position.x +
+            this.velocity.x +
+            (waveMovement * deltaTime) / SPEED
 
         if (newPositionY + this.height <= canvas.height) {
             this.position.y = newPositionY
@@ -32,24 +36,26 @@ class Leaf extends GameObject {
     }
 
     draw() {
-        let waveFrequency = 0.0005
-        let waveOffset =
-            this.position.y * waveFrequency + Date.now() * waveFrequency
-        let rotationAngle = Math.sin(waveOffset) * (Math.PI / 1)
+        if (this.isVisible()) {
+            let waveFrequency = 0.0005
+            let waveOffset =
+                this.position.y * waveFrequency + Date.now() * waveFrequency
+            let rotationAngle = Math.sin(waveOffset) * (Math.PI / 1)
 
-        c.save()
-        c.translate(
-            this.position.x + this.width / 2,
-            this.position.y + this.height / 2
-        )
-        c.rotate(rotationAngle)
-        c.drawImage(
-            this.image,
-            -this.width / 2,
-            -this.height / 2,
-            this.width,
-            this.height
-        )
-        c.restore()
+            c.save()
+            c.translate(
+                this.position.x + this.width / 2,
+                this.position.y + this.height / 2
+            )
+            c.rotate(rotationAngle)
+            c.drawImage(
+                this.image,
+                -this.width / 2,
+                -this.height / 2,
+                this.width,
+                this.height
+            )
+            c.restore()
+        }
     }
 }

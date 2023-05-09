@@ -167,61 +167,6 @@ function easeOutElastic(x) {
         : Math.pow(2, -10 * x) * Math.sin((x * 10 - 0.75) * c4) + 1
 }
 
-
-
-function titleScreen() {
-
-    const appleImage = new Image();
-    appleImage.src = './img/apple.png';
-
-    const leafImage = new Image();
-    leafImage.src = './img/leaf.png';
-
-    c.fillStyle = 'black'
-    c.fillRect(0, 0, canvas.width, canvas.height)
-
-    c.font = '65px ArcadeClassic, sans-serif'
-    c.fillStyle = 'green'
-    c.textAlign = 'center'
-    c.fillText('Caterpillar 2', canvas.width / 2, 165)
-
-    c.fillStyle = 'white'
-    c.font = '24px ArcadeClassic, sans-serif'
-    c.fillText(
-        'Press any key to start',
-        canvas.width / 2,
-        220
-    )
-
-    c.fillStyle = 'white'
-    c.font = '18px ArcadeClassic, sans-serif'
-    c.fillText(
-        'use arrow keys to move left and right',
-        canvas.width / 2,
-        260
-    )
-
-    c.font = '24px ArcadeClassic'
-    c.fillStyle = 'cyan'
-    c.fillText(`HIGH  ${padScore(hiScore, 5)}`, 80, 30)
-
-    c.fillStyle = 'yellow'
-    c.font = '16px ArcadeClassic, sans-serif'
-    c.fillText(
-        'Game created by Paul Newell 2023',
-        canvas.width / 2,
-        canvas.height - 30
-    )
-
-    c.font = '24px ArcadeClassic'
-    c.fillStyle = 'cyan'
-    c.fillText(`1 point`, 250, 320)
-    c.fillText(`5 points  ++`, 275, 365)
-
-    c.drawImage(leafImage, 150, 295, 30, 30)
-    c.drawImage(appleImage, 150, 340, 30, 30)
-}
-
 let hiScore = localStorage.getItem('hiScore') || 0
 
 function resetGame() {

@@ -5,7 +5,8 @@ class Mushroom extends GameObject {
     }
 
     update(deltaTime) {
-        let newPositionY = this.position.y + this.velocity.y * deltaTime / SPEED
+        let newPositionY =
+            this.position.y + (this.velocity.y * deltaTime) / SPEED
 
         if (newPositionY + this.height <= canvas.height) {
             this.position.y = newPositionY
@@ -15,12 +16,14 @@ class Mushroom extends GameObject {
     }
 
     draw() {
-        c.drawImage(
-            this.image,
-            this.position.x,
-            this.position.y,
-            this.width,
-            this.height
-        )
+        if (this.isVisible()) {
+            c.drawImage(
+                this.image,
+                this.position.x,
+                this.position.y,
+                this.width,
+                this.height
+            )
+        }
     }
 }
