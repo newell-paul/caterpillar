@@ -7,8 +7,8 @@ class Leaf extends GameObject {
             './img/leaf.png',
             Math.floor(Math.random() * (8 - 4 + 1)) + 4
         )
-        this.waveAmplitude = Math.random() * (4 - 1) + 1
-        this.waveFrequency = Math.random() * (0.004 - 0.001) + 0.001
+        this.waveAmplitude = Math.random() * (3 - 0.7) + 0.5; // Decreased range
+        this.waveFrequency = Math.random() * (0.002 - 0.0005) + 0.0005; // Decreased range
     }
 
     update(deltaTime) {
