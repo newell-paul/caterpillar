@@ -8,10 +8,7 @@ function titleScreen() {
     c.fillStyle = 'black'
     c.fillRect(0, 0, canvas.width, canvas.height)
 
-    c.font = '65px ArcadeClassic, sans-serif'
-    c.fillStyle = 'green'
-    c.textAlign = 'center'
-    c.fillText('Caterpillar', canvas.width / 2, 160)
+    wavyText('Caterpillar', 50, 130, 100, 20, 0.005)
 
     c.fillStyle = 'white'
     c.font = '24px ArcadeClassic, sans-serif'
@@ -40,4 +37,19 @@ function titleScreen() {
 
     c.drawImage(leafImage, 150, 312, 40, 40)
     c.drawImage(appleImage, 150, 360, 40, 40)
+}
+
+function wavyText(text, x, y, fontSize, amplitude, frequency) {
+    c.font = '75px ArcadeClassic, sans-serif'
+    c.fillStyle = 'green'
+    c.textAlign = 'center'
+
+    for (let i = 0; i < text.length; i++) {
+        let char = text[i]
+        let charWidth = c.measureText(char).width
+        let waveOffset = x * frequency + Date.now() * frequency
+        let yOffset = Math.sin(waveOffset + i * frequency * 2) * amplitude
+        c.fillText(char, x, y + yOffset)
+        x += charWidth
+    }
 }
