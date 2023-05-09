@@ -10,13 +10,14 @@ function titleScreen() {
 
     wavyText('Caterpillar', 50, 130, 100, 20, 0.005)
 
-    c.fillStyle = 'white'
+    const opacity = (Math.sin(Date.now() * 0.002) + 1) / 2
+    c.fillStyle = `rgba(255, 255, 255, ${opacity})`
     c.font = '24px ArcadeClassic, sans-serif'
     c.fillText('Press any key to start', canvas.width / 2, 220)
 
     c.fillStyle = 'white'
     c.font = '18px ArcadeClassic, sans-serif'
-    c.fillText('use arrow keys to move left and right', canvas.width / 2, 270)
+    c.fillText('use arrow keys to move left and right', canvas.width / 2, 280)
 
     c.font = '24px ArcadeClassic'
     c.fillStyle = 'cyan'
