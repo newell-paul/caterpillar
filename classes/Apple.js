@@ -1,5 +1,5 @@
 class Apple extends GameObject {
-    constructor(x, y, size) {
+    constructor(x, y, size, speed) {
         super(x, y, size, './img/apple.png', 6)
     }
 

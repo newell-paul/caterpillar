@@ -7,15 +7,15 @@ canvas.height = 500
 const SPEED = 18
 
 const leafMap = [
-    { x: 0.10, y: -1000, size: 20 },
+    { x: 0.1, y: -1000, size: 20 },
     { x: 0.15, y: -1000, size: 20 },
-    { x: 0.20, y: -1500, size: 35 },
-    { x: 0.30, y: -1400, size: 35 },
-    { x: 0.40, y: -2500, size: 20 },
-    { x: 0.60, y: -1800, size: 20 },
-    { x: 0.80, y: -1500, size: 35 },
+    { x: 0.2, y: -1500, size: 35 },
+    { x: 0.3, y: -1400, size: 35 },
+    { x: 0.4, y: -2500, size: 20 },
+    { x: 0.6, y: -1800, size: 20 },
+    { x: 0.8, y: -1500, size: 35 },
     { x: 0.85, y: -1100, size: 35 },
-    { x: 0.90, y: -1200, size: 35 },
+    { x: 0.9, y: -1200, size: 35 },
 ]
 
 const mushroomMap = [
@@ -44,6 +44,8 @@ let lastEventTimestamp
 let score = 0
 let appleScore = 5
 let mushroomSpeed = 5
+let leafAppleSpeed = 6
+
 let gameState = 'titleScreen'
 
 function gameLoop(timestamp) {
@@ -64,6 +66,7 @@ function gameLoop(timestamp) {
         lastEventTimestamp = timestamp
     }
     mushroomSpeed += 0.0005 // Slowly ramp up the difficulty
+    leafAppleSpeed += 0.0005
 
     if (gameState === 'gameplay') {
         handleInput(keys)

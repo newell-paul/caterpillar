@@ -51,9 +51,13 @@ function updateObjects(deltaTime) {
         caterpillar.head.rotation = 0
     }
 
-    leafs.forEach((leaf) => leaf.update(deltaTime))
+    leafs.forEach((leaf) => {
+        leaf.update(deltaTime)
+        leaf.velocity.y = leafAppleSpeed
+    })
 
     apple.update(deltaTime)
+    apple.velocity.y = leafAppleSpeed
 
     for (let shroom of shrooms) {
         shroom.update(deltaTime)
@@ -109,11 +113,11 @@ function drawObjects() {
     c.clearRect(0, 0, canvas.width, canvas.height)
     caterpillar.draw()
 
-    for (let shroom of shrooms) {
+    for (const shroom of shrooms) {
         shroom.draw()
     }
 
-    for (let leaf of leafs) {
+    for (const leaf of leafs) {
         leaf.draw()
     }
 
@@ -136,7 +140,7 @@ function crash() {
 
     c.clearRect(0, 0, canvas.width, canvas.height)
 
-    for (let segment of caterpillar.body) {
+    for (const segment of caterpillar.body) {
         segment.height =
             crashMinHeight + (crashStartHeight - crashMinHeight) * easedT
     }
