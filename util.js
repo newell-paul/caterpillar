@@ -175,6 +175,7 @@ let hiScore = localStorage.getItem('hiScore') || 0
 
 function resetGame() {
     mushroomSpeed = 5
+    leafAppleSpeed = 6
     appleScore = 5
     score = 0
     hiScore = localStorage.getItem('hiScore') || 0

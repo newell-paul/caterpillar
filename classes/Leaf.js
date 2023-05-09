@@ -7,16 +7,17 @@ class Leaf extends GameObject {
             './img/leaf.png',
             Math.floor(Math.random() * (8 - 4 + 1)) + 4
         )
+        this.waveAmplitude = Math.random() * (4 - 1) + 1
+        this.waveFrequency = Math.random() * (0.004 - 0.001) + 0.001
     }
 
     update(deltaTime) {
         let newPositionY =
             this.position.y + (this.velocity.y * deltaTime) / SPEED
-        let waveAmplitude = 2
-        let waveFrequency = 0.002
         let waveOffset =
-            this.position.y * waveFrequency + Date.now() * waveFrequency
-        let waveMovement = Math.sin(waveOffset) * waveAmplitude
+            this.position.y * this.waveFrequency +
+            Date.now() * this.waveFrequency
+        let waveMovement = Math.sin(waveOffset) * this.waveAmplitude
         let newPositionX =
             this.position.x +
             this.velocity.x +
